@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+i{
+    width: fit-content;
+}
+.hidden{
+    display: none;
+}
+.menu{
+    width: fit-content;
+    margin-left: 12px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.tools{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+.tools>i{
+    padding: 12px 0px 12px 0px;
+    cursor: pointer;
+}
+#pencil-icon{
+    cursor: pointer;
+}
+.pencil-container{
+    display: flex;
+    margin-top: 12px;   
+    margin-bottom: 12px;   
+}
+.color-container{
+    display: flex;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.color-container_box{
+    width: 16px;
+    height: 16px;
+}
+.color-container_black{
+    background-color: black;
+}
+.color-container_blue{
+    background-color: blue;
+}
+.color-container_red{
+    background-color: red;
+}
