@@ -20,13 +20,19 @@
                 <div class=" color-container_box color-container_blue"></div>
                 <div class=" color-container_box color-container_red"></div>
             </div>
+            <input class="pencil-container__width hidden" onchange="pencilWidthChange(this.value)" type="range" min="2" max="10" value="3">
         </div>
         <i id="download-icon" class="fas fa-file-download"></i>
-        <i id="eraser-icon" class="fas fa-eraser"></i>
+        <div class="eraser_container">
+            <i id="eraser-icon" class="fas fa-eraser"></i>
+            <input class="eraser-container__width hidden" onchange="eraserWidthChange(this.value)" type="range" min="2" max="10" value="3">
+        </div>
         <i id="upload-icon" class="fas fa-upload"></i>
         <i id="sticy_note-icon" class="fas fa-sticky-note"></i>
         <i id="undo" class="fas fa-undo"></i>
     </div>
 </body>
-<script src="./script.js"></script>
+<script src="./script/menuControl.js"></script>
+<script src="./script/stickyNoteActions.js"></script>
+<script src="./script/CanvasActions.js"></script>
 </html>

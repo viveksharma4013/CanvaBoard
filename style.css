@@ -35,6 +35,11 @@ i{
     margin-top: 12px;   
     margin-bottom: 12px;   
 }
+.eraser_container{
+    display: flex;
+    margin-top: 12px;   
+    margin-bottom: 12px; 
+}
 .color-container{
     display: flex;
     margin-left: 12px;
@@ -52,4 +57,53 @@ i{
 }
 .color-container_red{
     background-color: red;
+}
+.scale-it{
+    animation-name: scale_element;
+    animation-duration: 2s;
+}
+@keyframes scale_element{
+    0%{
+        transform: scale(0.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.sticky_container{
+    position: absolute;
+    top: 15rem;
+    left: 10rem;
+    height: 250px;
+    width: 250px;
+    background-color: antiquewhite;
+}
+.sticky_container__head{
+    height: 25px ;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.sticky_container__head__close{
+    background-color: red;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin-right: 0.5rem;
+}
+.sticky_container__head__minimize{
+    background-color: green;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin-right: 0.5rem;
+}
+textarea{
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+}
+img{
+    height: 100%;
+    width: 100%;
 }
