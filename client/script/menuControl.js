@@ -5,6 +5,7 @@ var pencil_icon=document.getElementById("pencil-icon");
 var eraser_icon=document.getElementById("eraser-icon");
 var sticy_note_icon=document.getElementById("sticy_note-icon");
 var upload_icon=document.getElementById("upload-icon");
+var download_icon=document.getElementById("download-icon");
 var color_selector=document.getElementById("color-container");
 var pencil_width_setter=document.getElementsByClassName("pencil-container__width")[0]
 var eraser_width_setter=document.getElementsByClassName("eraser-container__width")[0]
@@ -40,13 +41,6 @@ eraser_icon.onclick=function(e){
     }
     eraser_select_closed=!eraser_select_closed;
 }
-// change width of pencil using this function
-function pencilWidthChange(e){
-    console.log(e)
-}
-function eraserWidthChange(e){
-    console.log("eraser",e)
-}
 
 // create new stickynote
 sticy_note_icon.addEventListener('click',()=>{
@@ -63,4 +57,10 @@ upload_icon.addEventListener('click',()=>{
     })
 });
 
-      
+download_icon.addEventListener('click',(e)=>{
+    let url=canvas.toDataURL();
+    let a=document.createElement('a');
+    a.href=url;
+    a.download='board.jpg';
+    a.click();
+})

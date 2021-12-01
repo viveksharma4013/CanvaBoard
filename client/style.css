@@ -8,6 +8,10 @@ body{
 i{
     width: fit-content;
 }
+
+.secondary_container{
+    display: flex;
+}
 .hidden{
     display: none;
 }
@@ -49,13 +53,13 @@ i{
     width: 16px;
     height: 16px;
 }
-.color-container_black{
+.black{
     background-color: black;
 }
-.color-container_blue{
+.blue{
     background-color: blue;
 }
-.color-container_red{
+.red{
     background-color: red;
 }
 .scale-it{
