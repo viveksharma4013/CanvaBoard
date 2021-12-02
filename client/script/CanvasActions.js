@@ -45,33 +45,11 @@ function loadImage(){
     }
 }
 const beginPath=function(coordinates){
+    drawing=true;
     tool.beginPath();
     tool.moveTo(coordinates.x,coordinates.y);
 }
-const draw=function(coordinates){
-    if(drawing){
-        tool.lineTo(coordinates.x,coordinates.y);
-        tool.stroke();
-    }
-}
-
-selectColors();
-canvas.addEventListener('mousedown',(e)=>{
-    drawing=true;
-    beginPath({x:e.clientX,y:e.clientY});
-})
-canvas.addEventListener('mousemove',(e)=>{
-    draw({x:e.clientX,y:e.clientY});
-})
-canvas.addEventListener('mouseup',(e)=>{
-    drawing=false;
-    let url=canvas.toDataURL();
-    imgData.push(url);
-    currImage=imgData.length-1;
-    if(currImage-1>=0) console.log(imgData[currImage]==imgData[currImage-1])
-})
-
-eraser_icon.addEventListener('click',()=>{
+const eraseContent=function(coordinates){
     if(!eraserActive){
         tool.strokeStyle="white"
         tool.lineWidth=eraser_width;
@@ -80,6 +58,39 @@ eraser_icon.addEventListener('click',()=>{
         tool.lineWidth=pencil_width;
     }
     eraserActive=!eraserActive;
+}
+const draw=function(coordinates){
+    if(drawing){
+        tool.lineTo(coordinates.x,coordinates.y);
+        tool.stroke();
+    }
+}
+const endDraw=function(){
+    drawing=false;
+    let url=canvas.toDataURL();
+    imgData.push(url);
+    currImage=imgData.length-1;
+}
+
+selectColors();
+canvas.addEventListener('mousedown',(e)=>{
+    let data={x:e.clientX,y:e.clientY};
+    beginPath(data);
+    socket.emit("startDraw",data);
+})
+canvas.addEventListener('mousemove',(e)=>{
+    let data={x:e.clientX,y:e.clientY};
+    draw(data);
+    if(drawing) socket.emit("drawing",data);
+})
+canvas.addEventListener('mouseup',(e)=>{
+    endDraw();
+    socket.emit("endDrawing");
+})
+
+eraser_icon.addEventListener('click',()=>{
+    eraseContent();
+    socket.emit("eraseContent");
 })
 
 undo.addEventListener('click',()=>{
@@ -93,4 +104,18 @@ redo.addEventListener('click',()=>{
 
 clear_icon.addEventListener('click',()=>{
     tool.clearRect(0,0,canvas.width,canvas.height)
+})
+
+
+socket.on('startDraw',(data)=>{
+    beginPath(data)
+})
+socket.on('drawing',(data)=>{
+    draw(data);
+})
+socket.on('endDrawing',()=>{
+    endDraw();
+})
+socket.on('eraseContent',()=>{
+    eraseContent();
 })

@@ -79,7 +79,6 @@ function createStickyWithImage(imgUrl){
 
 function stickyNoteAction(minimize,close,element){
     close.addEventListener('click',(e)=>{
-        console.log(element)
         element.remove();
     })
     minimize.addEventListener('click',()=>{
