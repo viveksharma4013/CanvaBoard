@@ -14,6 +14,7 @@ var eraser_width_setter=document.getElementsByClassName("eraser-container__width
 var menuClosed=true;
 var pencil_select_closed=true;
 var eraser_select_closed=true;
+
 // open tools with menu button
 menu[0].onclick=function(e){
     if(menuClosed){
