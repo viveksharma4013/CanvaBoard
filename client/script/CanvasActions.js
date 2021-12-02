@@ -104,6 +104,7 @@ redo.addEventListener('click',()=>{
 
 clear_icon.addEventListener('click',()=>{
     tool.clearRect(0,0,canvas.width,canvas.height)
+    socket.emit("clearCanvas");
 })
 
 
@@ -118,4 +119,7 @@ socket.on('endDrawing',()=>{
 })
 socket.on('eraseContent',()=>{
     eraseContent();
+})
+socket.on('clearCanvas',()=>{
+    tool.clearRect(0,0,canvas.width,canvas.height);
 })

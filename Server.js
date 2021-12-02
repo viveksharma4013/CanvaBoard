@@ -22,4 +22,7 @@ io.on('connection',(socket)=>{
     socket.on('eraseContent',()=>{
         socket.broadcast.emit('eraseContent')
     })
+    socket.on('clearCanvas',()=>{
+        socket.broadcast.emit('clearCanvas')
+    })
 })
