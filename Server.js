@@ -1,7 +1,7 @@
 const express=require('express');
 const socket=require('socket.io');
 const app=express();
-const port= process.env.port|| 5500;
+const port= process.env.PORT|| 5500;
 app.use(express.static('client'));
 const server=app.listen(port,()=>{
     console.log("Listening at ",port);
